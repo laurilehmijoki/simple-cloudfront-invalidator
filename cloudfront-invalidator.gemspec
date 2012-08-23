@@ -11,7 +11,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'colored', '= 1.2'
 
-  s.add_development_dependency 'cucumber'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'vcr'
+  s.add_development_dependency 'webmock'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'aruba', '>= 0.4.7'
+  s.add_development_dependency 'require_relative'
 end

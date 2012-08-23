@@ -5,7 +5,7 @@ require 'net/https'
 require 'base64'
 require 'colored'
 
-module CloudfrontS3Invalidator
+module CloudfrontInvalidator
   class CloudfrontClient
     def initialize(aws_account, aws_secret, distribution)
       @aws_account = aws_account
@@ -14,7 +14,7 @@ module CloudfrontS3Invalidator
     end
 
     def invalidate(items)
-      items = to_cf_keys(items)
+      items = prefix_with_slash(items)
       body = %|
         <InvalidationBatch>
           <Paths>
@@ -28,23 +28,8 @@ module CloudfrontS3Invalidator
       |
       res = sign_and_call(
         "https://cloudfront.amazonaws.com/2012-05-05/distribution/#{@distribution}/invalidation",
-        Net::HTTP::Post,
-        body)
-      print_invalidation_result(res, items)
-    end
-
-    def get_s3_bucket_name
-      res = sign_and_call(
-        "https://cloudfront.amazonaws.com/2012-05-05/distribution/#{@distribution}",
-        Net::HTTP::Get)
-      matches =
-        res.body.scan(/<DomainName>([\w|\.]+)\.s3\.amazonaws\.com<\/DomainName>/)
-      if matches.empty?
-        nil
-      else
-        s3_bucket_name = matches.first.first
-        s3_bucket_name
-      end
+        Net::HTTP::Post, body)
+      create_report(items)
     end
 
     private
@@ -72,16 +57,17 @@ module CloudfrontS3Invalidator
       end
     end
 
-    def print_invalidation_result(http_response, items)
-      puts "Invalidating Cloudfront items..."
+    def create_report(items)
+      report = []
+      report << "Invalidating Cloudfront items..."
       items.each do |item|
-        puts "  #{item}".yellow
+        report << "  #{item}".yellow
       end
-      puts "succeeded".green
+      report << "succeeded".green
     end
 
-    def to_cf_keys(s3_keys)
-      s3_keys.map { |s3_key| "/#{s3_key}" }
+    def prefix_with_slash(file_names)
+      file_names.map { |file_name| "/#{file_name}" }
     end
 
     def to_xml(items)

@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cloudfront.amazonaws.com/2012-05-05/distribution/FOOOO/invalidation
+    body:
+      string: "\n        <InvalidationBatch>\n          <Paths>\n            <Quantity>2</Quantity>\n            <Items>\n              <Path>/index.html</Path><Path>/articles.html</Path>\n            </Items>\n          </Paths>\n          <CallerReference>1238921371</CallerReference>\n        </InvalidationBatch>\n      "
+    headers:
+      Authorization:
+      - AWS foooo:baaaar
+      Content-Type:
+      - text/xml
+      X-Amz-Date:
+      - Thu, 23 Aug 2012 19:46:10 EEST
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Length:
+      - "393"
+      Location:
+      - https://cloudfront.amazonaws.com/2012-05-05/distribution/FOOOO/invalidation/BAR
+      Date:
+      - Thu, 23 Aug 2012 16:46:10 GMT
+      X-Amzn-Requestid:
+      - FOOO
+      Content-Type:
+      - text/xml
+    body:
+      string: |-
+        <?xml version="1.0"?>
+        <Invalidation xmlns="http://cloudfront.amazonaws.com/doc/2012-05-05/"><Id>FOOO</Id><Status>InProgress</Status><CreateTime>2012-08-23T16:46:10.764Z</CreateTime><InvalidationBatch><Paths><Quantity>2</Quantity><Items><Path>/articles.html</Path><Path>/index.html</Path></Items></Paths><CallerReference>123213123</CallerReference></InvalidationBatch></Invalidation>
+    http_version:
+  recorded_at: Thu, 23 Aug 2012 16:46:10 GMT
+recorded_with: VCR 2.2.2
