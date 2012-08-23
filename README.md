@@ -5,6 +5,14 @@ Status](https://secure.travis-ci.org/laurilehmijoki/simple-cloudfront-invalidato
 
 A library for invalidating AWS Cloudfront items.
 
+## Usage
+
+This gem is meant to be used as a dependency in other Ruby projects.
+
+Take a look at <https://github.com/laurilehmijoki/cf-s3-invalidator>, which
+makes it possible to invalidate S3-based Cloudfront distributions from the
+command-line interface.
+
 ## Tests
 
 Run `rake test`.
