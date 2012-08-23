@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module CloudfrontInvalidator
+module SimpleCloudfrontInvalidator
   describe CloudfrontClient do
     it "calls the Cloudfront invalidation API" do
       VCR.use_cassette('cloudfront', :match_requests_on => [:host]) do

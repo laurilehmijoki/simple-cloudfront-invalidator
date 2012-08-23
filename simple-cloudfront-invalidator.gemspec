@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name          = 'cloudfront-invalidator'
+  s.name          = 'simple-cloudfront-invalidator'
   s.version       = '0.0.1'
   s.license       = 'MIT'
   s.summary       = 'A library for invalidating Cloudfront distributions'
@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email         = 'lauri.lehmijoki@iki.fi'
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ['lib']
-  s.homepage      = 'https://github.com/laurilehmijoki/cloudfront-invalidator'
+  s.homepage      = 'https://github.com/laurilehmijoki/simple-cloudfront-invalidator'
 
   s.add_dependency 'colored', '= 1.2'
 

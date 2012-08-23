@@ -5,7 +5,7 @@ require 'net/https'
 require 'base64'
 require 'colored'
 
-module CloudfrontInvalidator
+module SimpleCloudfrontInvalidator
   class CloudfrontClient
     def initialize(aws_account, aws_secret, distribution)
       @aws_account = aws_account
