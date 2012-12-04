@@ -29,7 +29,8 @@ module SimpleCloudfrontInvalidator
       res = sign_and_call(
         "https://cloudfront.amazonaws.com/2012-05-05/distribution/#{@distribution}/invalidation",
         Net::HTTP::Post, body)
-      create_report(items)
+      return { :text_report => create_report(items),
+               :invalidated_items_count => items.length }
     end
 
     private
