@@ -36,7 +36,7 @@ module SimpleCloudfrontInvalidator
     private
 
     def sign_and_call(url, method, body = nil)
-      date = Time.now.strftime("%a, %d %b %Y %H:%M:%S %Z")
+      date = Time.now.utc.strftime("%a, %d %b %Y %H:%M:%S %Z")
       digest = Base64.encode64(
         OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), @aws_secret, date)).strip
       uri = URI.parse(url)
