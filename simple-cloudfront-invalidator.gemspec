@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'simple-cloudfront-invalidator'
-  s.version       = '1.0.0'
+  s.version       = '1.0.1'
   s.license       = 'MIT'
   s.summary       = 'A library for invalidating Cloudfront distributions'
   s.authors       = ['Lauri Lehmijoki']
