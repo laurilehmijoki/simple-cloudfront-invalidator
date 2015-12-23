@@ -14,11 +14,11 @@ module SimpleCloudfrontInvalidator
     end
 
     it 'returns a textual report on the invalidation' do
-      textual_report = @report[:text_report]
-      textual_report.join('').should include("Invalidating Cloudfront items...")
-      textual_report.join('').should include("/index.html")
-      textual_report.join('').should include("/articles.html")
-      textual_report.join('').should include("succeeded")
+      textual_report = @report[:text_report].join('')
+      expect(textual_report).to include "Invalidating Cloudfront items..."
+      expect(textual_report).to include "/index.html"
+      expect(textual_report).to include "/articles.html"
+      expect(textual_report).to include "succeeded"
     end
 
     it 'returns the count of successfully invalidated items' do
