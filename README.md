@@ -1,3 +1,5 @@
+# Important: this project is no longer actively maintained
+
 # Simple Cloudfront invalidator
 [![Build
 Status](https://secure.travis-ci.org/laurilehmijoki/simple-cloudfront-invalidator.png)]
